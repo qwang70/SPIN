@@ -1,0 +1,83 @@
+
+MQ1:  Where is the definition of block led_highlighter.leds_position ?
+Source file: led_highlighter.py. Start Line: 283, End Line: 289 
+
+MQ2:  What is the name and description of the top-level workflow?
+WorkflowName: led_highlighter. Description: Find Led highlights of the video
+
+MQ3:  What are the names of any top-level functions?
+
+MQ4:  What are the names of the programs comprising the top-level workflow?
+SubProgram Name: display_img
+SubProgram Name: grab_images
+SubProgram Name: to_gray
+SubProgram Name: extract_bright
+SubProgram Name: find_leds
+SubProgram Name: leds_position
+SubProgram Name: print_info
+
+MQ5:  What are the names and descriptions of the inputs to the top-level workflow?
+InputPortName: video_file. Description: Input Video File
+InputPortName: frame_inc. Description: Frame_Increment
+InputPortName: histogram. Description: whether to use histogram calculation to find the best margin
+
+MQ6:  What data is output by program block led_highlighter.leds_position ?
+Data Name: centers. Description: Centers of rectangle led regions
+
+MQ7: What program blocks provide input directly to led_highlighter.leds_position ?
+led_highlighter.find_leds
+
+MQ8: What programs have input ports that receive data led_highlighter[thresholded_image] ?
+led_highlighter.display_img
+led_highlighter.find_leds
+
+MQ9: How many ports read data led_highlighter[thresholded_image] ?
+2 ports read data led_highlighter[thresholded_image]
+
+MQ10: How many data are read by more than 1 port in workflow?
+0 data are read by more than port in workflow
+
+MQ11: What program blocks are immediately downstream of led_highlighter.extract_bright ?
+display_img
+find_leds
+
+MQ12: What program blocks are immediately upstream of led_highlighter.extract_bright ?
+to_gray
+
+MQ13: What program blocks are upstream of led_highlighter.leds_position ?
+grab_images
+to_gray
+extract_bright
+find_leds
+
+MQ14: What program blocks are downstream of led_highlighter.to_gray ?
+display_img
+extract_bright
+find_leds
+leds_position
+print_info
+
+MQ15: What data is immediately downstream of led_highlighter[thresholded_image] ?
+led_image
+led_region
+
+MQ16: What data is immediately upstream of led_highlighter[thresholded_image] ?
+histogram
+gray_image
+
+MQ17: What data is downstream of led_highlighter[thresholded_image] ?
+led_image
+led_region
+centers
+formated_centers
+num_centers
+
+MQ18: What data is uptream of led_highlighter[thresholded_image] ?
+video_file
+delay
+Frame_Increment
+saved_image
+histogram
+gray_image
+
+MQ19: What URI variables are associated with writes of data led_highlighter[formated_centers] ?

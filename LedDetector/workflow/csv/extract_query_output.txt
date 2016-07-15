@@ -1,0 +1,15 @@
+EQ1:  What source files SF were YW annotations extracted from?
+led_highlighter.py
+
+EQ2:  What are the names N of all program blocks?
+led_highlighter
+display_img
+grab_images
+to_gray
+extract_bright
+find_leds
+leds_position
+print_info
+
+EQ3:  What out ports are qualified with URIs?
+saved_image

@@ -1,9 +1,9 @@
 program_id,program_name,qualified_program_name,begin_annotation_id,end_annotation_id
-1,led_highlighter,led_highlighter,1,84
-2,display_img,led_highlighter.display_img,15,25
-3,grab_images,led_highlighter.grab_images,26,36
-4,to_gray,led_highlighter.to_gray,37,45
-5,extract_bright,led_highlighter.extract_bright,46,56
-6,find_leds,led_highlighter.find_leds,57,67
-7,leds_position,led_highlighter.leds_position,68,75
-8,print_info,led_highlighter.print_info,76,83
+1,led_highlighter,led_highlighter,1,85
+2,display_img,led_highlighter.display_img,16,26
+3,grab_images,led_highlighter.grab_images,27,37
+4,to_gray,led_highlighter.to_gray,38,46
+5,extract_bright,led_highlighter.extract_bright,47,57
+6,find_leds,led_highlighter.find_leds,58,68
+7,leds_position,led_highlighter.leds_position,69,76
+8,print_info,led_highlighter.print_info,77,84

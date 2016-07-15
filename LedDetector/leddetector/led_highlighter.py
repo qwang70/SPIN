@@ -10,7 +10,7 @@ import cv
 # ---- Useful functions ----
 
 """
-    @begin led_highlighter
+    @begin led_highlighter @desc Find Led highlights of the video
     @in video_file @desc Input Video File
     @param frame_inc @as Frame_Increment
     @param delay
