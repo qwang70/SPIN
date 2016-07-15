@@ -1,0 +1,13 @@
+port_id,alias
+2,Frame_Increment
+8,gray_image
+9,thresholded_image
+10,led_image
+12,Frame_Increment
+17,gray_image
+18,gray_image
+20,thresholded_image
+21,thresholded_image
+22,led_image
+23,led_region
+24,led_region

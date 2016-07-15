@@ -1,0 +1,4 @@
+port_id,uri
+5,file:../data/{frame}.jpg
+15,file:../data/{frame}.jpg
+16,file:../data/{frame}.jpg

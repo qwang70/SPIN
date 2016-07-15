@@ -1,0 +1,87 @@
+Created on 25 mai 2012
+@author: jlengrand
+---- Useful functions ----
+@begin led_highlighter
+@in video_file @desc Input Video File
+@param frame_inc @as Frame_Increment
+@param delay
+@param histogram @desc whether to use histogram calculation to find the best margin
+@out saved_image @desc saved image from the video @uri file:../data/{frame}.jpg
+@out formated_centers
+@out num_centers @desc Number of LED Highlights
+Given the name of the video, prepares the stream and checks that everything works as attended
+@begin display_img @as display_image @desc One liner that displays the given image on screen
+@in image @as gray_image
+@in image @as thresholded_image
+@in image @as led_image
+@param delay
+One liner that displays the given image on screen
+Displays frames of the video in a dumb way.
+Used to see if everything is working fine
+my_video = cvCapture object
+frame_inc = Nmber of increments between each frame displayed
+delay = time delay between each image
+@end display_img
+Walks through the entire video and save image for each increment
+Display the video and save evry increment frames
+Converts the input in grey levels
+Returns a one channel image
+Returns a one dimension histogram for the given image
+The image is expected to have one channel, 8 bits depth
+nBins can be defined between 1 and 255
+Extracts brightest part of the image.
+Expected to be the LEDs (provided that there is a dark background)
+Returns a Thresholded image
+histgram defines if we use the hist calculation to find the best margin
+# Searches for image maximum (brightest pixel)
+We expect the LEDs to be brighter than the rest of the image
+We retrieve only the brightest part of the image
+Here is use a fixed margin (80%), but you can use hist to enhance this one
+# Histogram may be used to wisely define the margin
+We expect a huge spike corresponding to the mean of the background
+and another smaller spike of bright values (the LEDs)
+statistics to be calculated using hist data
+in pix value to be extracted
+Given a binary image showing the brightest pixels in an image,
+returns a result image, displaying found leds in a rectangle
+Function using the regions in input to calculate the position of found leds
+@begin grab_images @desc save image for each frame increment of the video
+@param frame_inc @as Frame_Increment
+@param delay
+@in video_file @desc Input Video File
+@out saved_image @desc saved image from the video @uri file:../data/{frame}.jpg
+do once once, create some images out of the video
+@end grab_images
+Displays the image I ll be working with
+###
+Starts image processing here
+###
+@begin to_gray @desc Converts the input in grey levels
+@in saved_image @desc saved image from the video @uri file:../data/{frame}.jpg
+@out gray_img @as gray_image @desc A one channel image
+Turns to one channel image
+@end to_gray
+@begin extract_bright @desc Extracts brightest part of the image
+@in gray_img @as gray_image @desc A one channel image
+@param histogram @desc whether to use histogram calculation to find the best margin
+@out thresh_img @as thresholded_image @desc A thresholded image
+Detect brightest point in image :
+@end extract_bright
+@begin find_leds @desc Find the brightest pixels in an image
+@in thresh_img @as thresholded_image @desc A thresholded image
+@out out_img @as led_image
+@out region @as led_region @desc Rectangles of led region
+We want to extract the elements left, and count their number
+@end find_leds
+@begin leds_position @desc Using the regions in input to calculate the position of found leds
+@in regions @as led_region @desc Rectangles of led region
+@out centers @led_center @desc Centers of rectangle led regions
+@end leds_position
+@begin print_info @desc Print the result of this script
+@in centers @led_center @desc Centers of rectangle led regions
+@out formated_centers
+@out num_centers @desc Number of LED Highlights
+"
+"
+@end print_info
+@end led_highlighter

@@ -1,0 +1,117 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Courier; fontsize=18; labelloc=t
+label=led_highlighter
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+
+/* Nodes representing atomic programs in workflow */
+display_img [shape=record rankdir=LR label="{<f0> display_img |<f1> One liner that displays the given image on screen}"];
+grab_images [shape=record rankdir=LR label="{<f0> grab_images |<f1> save image for each frame increment of the video}"];
+to_gray [shape=record rankdir=LR label="{<f0> to_gray |<f1> Converts the input in grey levels}"];
+extract_bright [shape=record rankdir=LR label="{<f0> extract_bright |<f1> Extracts brightest part of the image}"];
+find_leds [shape=record rankdir=LR label="{<f0> find_leds |<f1> Find the brightest pixels in an image}"];
+leds_position [shape=record rankdir=LR label="{<f0> leds_position |<f1> Using the regions in input to calculate the position of found leds}"];
+print_info [shape=record rankdir=LR label="{<f0> print_info |<f1> Print the result of this script}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+saved_image [shape=record rankdir=LR label="{<f0> saved_image |<f1> file\:../data/\{frame\}.jpg}"];
+formated_centers
+num_centers
+gray_image
+thresholded_image
+led_image
+video_file
+led_region
+centers
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+delay
+Frame_Increment
+histogram
+
+/* Edges representing connections between programs and channels */
+gray_image -> display_img
+thresholded_image -> display_img
+led_image -> display_img
+delay -> display_img
+grab_images -> saved_image
+Frame_Increment -> grab_images
+delay -> grab_images
+video_file -> grab_images
+to_gray -> gray_image
+saved_image -> to_gray
+extract_bright -> thresholded_image
+gray_image -> extract_bright
+histogram -> extract_bright
+find_leds -> led_image
+find_leds -> led_region
+thresholded_image -> find_leds
+leds_position -> centers
+led_region -> leds_position
+print_info -> formated_centers
+print_info -> num_centers
+centers -> print_info
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Hidden double-cluster for grouping workflow input ports */
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+video_file_input_port [label=""]
+Frame_Increment_input_port [label=""]
+delay_input_port [label=""]
+histogram_input_port [label=""]
+
+/* End of double-cluster for grouping workflow input ports */
+}}
+
+/* Hidden double-cluster for grouping workflow output ports */
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+saved_image_output_port [label=""]
+formated_centers_output_port [label=""]
+num_centers_output_port [label=""]
+
+/* End of double-cluster for grouping workflow output ports */
+}}
+
+/* Edges from input ports to channels */
+video_file_input_port -> video_file
+Frame_Increment_input_port -> Frame_Increment
+delay_input_port -> delay
+histogram_input_port -> histogram
+
+/* Edges from channels to output ports */
+saved_image -> saved_image_output_port
+formated_centers -> formated_centers_output_port
+num_centers -> num_centers_output_port
+
+/* End of top-level graph */
+}
