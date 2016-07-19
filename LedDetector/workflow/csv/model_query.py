@@ -190,7 +190,7 @@ def MQ10():
         FROM modelfacts_program p
         JOIN data_in_workflow_read_by_multiple_ports dmp
         ON p.program_id = dmp. program_id
-        WHERE p.program_name = 'GRAVITATIONAL_WAVE_DETECTION';
+        WHERE p.program_name = 'led_highlighter';
         """
     cursor.execute(query)
     results = cursor.fetchall()
@@ -369,7 +369,7 @@ def MQ20(Data1, Data2):
         output_data_has_uri_variable(D2, V2),
         uri_variable(V1, VariableName, _),
         uri_variable(V2, VariableName, _).'''
-    query = """SELECT uri1.variable_name FROM modelfacts_data d1 
+    query = """SELECT DISTINCT uri1.variable_name FROM modelfacts_data d1
                 NATURAL JOIN output_data_has_uri_variable ohu 
                 NATURAL JOIN modelfacts_uri_variable uri1 
                 JOIN modelfacts_uri_variable uri2 ON uri1.variable_name = uri2.variable_name 

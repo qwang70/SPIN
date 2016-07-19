@@ -35,7 +35,7 @@ MQ9: How many ports read data led_highlighter[thresholded_image] ?
 2 ports read data led_highlighter[thresholded_image]
 
 MQ10: How many data are read by more than 1 port in workflow?
-0 data are read by more than port in workflow
+3 data are read by more than port in workflow
 
 MQ11: What program blocks are immediately downstream of led_highlighter.extract_bright ?
 display_img
