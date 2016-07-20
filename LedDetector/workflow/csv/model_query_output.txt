@@ -80,4 +80,6 @@ saved_image
 histogram
 gray_image
 
-MQ19: What URI variables are associated with writes of data led_highlighter[formated_centers] ?
+MQ19: What URI variables are associated with writes of data led_highlighter[saved_image] ?
+frame
+frame

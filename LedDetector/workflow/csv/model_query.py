@@ -350,7 +350,7 @@ def MQ19(DataName):
         has_out_port(_, OUT),
         uri_variable(_, VariableName, OUT).
     '''
-    query = """SELECT uri.variable_name FROM modelfacts_data d 
+    query = """SELECT DISTINCT uri.variable_name FROM modelfacts_data d 
             NATURAL JOIN modelfacts_channel c NATURAL JOIN modelfacts_port_connects_to_channel pcc 
             NATURAL JOIN modelfacts_has_out_port hop NATURAL JOIN modelfacts_uri_variable uri 
             WHERE d.qualified_data_name = :DataName;"""
@@ -761,8 +761,8 @@ if __name__ == '__main__':
     MQ17(DataName1)
     print "\nMQ18: What data is uptream of", DataName1,"?"
     MQ18(DataName1)
-    print "\nMQ19: What URI variables are associated with writes of data", DataName2,"?"
-    MQ19(DataName2)
+    print "\nMQ19: What URI variables are associated with writes of data", "led_highlighter[saved_image]","?"
+    MQ19("led_highlighter[saved_image]")
     cursor.close()
     connection.close()
 
